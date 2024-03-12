@@ -16,7 +16,7 @@ void explorer(Plateau &p, Position u){
     Position v = voisine(u, i);
     if(p.tuiles.find(v) != p.tuiles.end() && p.tuiles.find(v)->second.amenagement == Amenagement::ROUTE && p.tuiles.find(v)->second.estvisitee != true){
       //lancer un parcours en profondeur sur cette case
-      p.tuiles.find(v).estvisitee = true;
+      p.tuiles.find(v)-> second.estvisitee = true;
       explorer(p, v);
     }
   }  
@@ -27,7 +27,7 @@ void parcours_en_profondeur(Plateau &p, Position d){
   for(auto& t   : p.tuiles) {
     t.second.estvisitee = false;
   }
-  d.second.estvisitee = true;
+  p.tuiles.find(d)->second.estvisitee = true;
   explorer(p, d);
 }
 
@@ -52,9 +52,6 @@ static void placer_routes(Plateau& p) {
     }
 
 }
-
-
-
 
 void Plateau::ajouter(const Position& pos) {
   if(tuiles.find(pos) != tuiles.end()) {

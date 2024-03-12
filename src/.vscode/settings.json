@@ -5,5 +5,10 @@
             "binaryPath": "/home/nael/LIFAPC/projet/freshfish-etu/src/test_routes",
             "binaryArgs": []
         }
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#412531",
+        "titleBar.activeBackground": "#5B3444",
+        "titleBar.activeForeground": "#FCF9FA"
+    }
 }
