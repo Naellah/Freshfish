@@ -10,7 +10,7 @@ Position voisine(const Position& pos, int index) {
       res.first-- ;
       break ;
     case 1:
-      res.second++ ;
+      res.second++ ; 
       break ;
     case 2:
       res.first++ ;
@@ -19,6 +19,8 @@ Position voisine(const Position& pos, int index) {
       res.second-- ;
       break ;
 
+    default:
+      break;
     
   }
   return res ;

@@ -4,12 +4,57 @@
 
 #include <stdexcept>
 #include <sstream>
+#include <stack>
+#include <iostream>
+
+using namespace std;
+
+
+void explorer(Plateau &p, Position u){
+  //pour chaque voisin de u
+  for(int i = 0; i < 4; i++) {
+    Position v = voisine(u, i);
+    if(p.tuiles.find(v) != p.tuiles.end() && p.tuiles.find(v)->second.amenagement == Amenagement::ROUTE && p.tuiles.find(v)->second.estvisitee != true){
+      //lancer un parcours en profondeur sur cette case
+      p.tuiles.find(v).estvisitee = true;
+      explorer(p, v);
+    }
+  }  
+}
+
+
+void parcours_en_profondeur(Plateau &p, Position d){
+  for(auto& t   : p.tuiles) {
+    t.second.estvisitee = false;
+  }
+  d.second.estvisitee = true;
+  explorer(p, d);
+}
+
+
 
 static void placer_routes(Plateau& p) {
+    for(auto& t   : p.tuiles) {
+      if(t.second.amenagement == Amenagement::VIDE) {
+        p.amenager(t.first, Amenagement::ARBRE, -1);
+        for(auto& t1: p.tuiles){
+          if(t1.second.amenagement == Amenagement::VIDE){
+            parcours_en_profondeur(p,t1.first);
+          }
+        }
+        for(auto t2: p.tuiles){
+          if(t2.second.estvisitee != true){
+            p.amenager(t2.first, Amenagement::ROUTE, -1);
+          }
+        }
 
-  //votre code ici
+      }
+    }
 
 }
+
+
+
 
 void Plateau::ajouter(const Position& pos) {
   if(tuiles.find(pos) != tuiles.end()) {

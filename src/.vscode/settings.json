@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/nael/LIFAPC/projet/freshfish-etu/src",
+            "binaryPath": "/home/nael/LIFAPC/projet/freshfish-etu/src/test_routes",
+            "binaryArgs": []
+        }
+    ]
+}

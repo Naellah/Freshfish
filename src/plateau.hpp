@@ -12,6 +12,7 @@
 struct Tuile {
   Amenagement amenagement ;
   int joueur ;
+  bool estvisitee;
 } ;
 
 struct Plateau {

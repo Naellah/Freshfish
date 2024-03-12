@@ -12,6 +12,8 @@ using Position = std::pair<int, int> ;
 //  3 -> droite
 Position voisine(const Position& pos, int index) ;
 
+
+
 std::ostream& operator<<(std::ostream& out, const Position& pos) ;
 
 #endif
